@@ -21,7 +21,7 @@ const coords = [30.42454333155956, -91.08618485649713]
 let currentCoords = [...coords];
 
 const resetButton = document.querySelector("#reset");
-resetButton.addEventListener('click', (event) => {
+resetButton.addEventListener('click', () => {
     currentCoords = [...coords];
     coordsElement.textContent = '(none selected)';
     dot.style.opacity = '0';
