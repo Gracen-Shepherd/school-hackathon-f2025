@@ -23,6 +23,6 @@ let currentCoords = [...coords];
 const resetButton = document.querySelector("#reset");
 resetButton.addEventListener('click', () => {
     currentCoords = [...coords];
-    coordsElement.textContent = '(none selected)';
+    coordsElement.textContent = '(none selected, click map location)';
     dot.style.opacity = '0';
 })

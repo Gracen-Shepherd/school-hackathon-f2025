@@ -101,3 +101,9 @@ body {
 .btn-card {
     display: flex;
 }
+
+.coords {
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
