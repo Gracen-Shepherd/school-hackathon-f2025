@@ -10,7 +10,7 @@ function TruncateSixDigits(num) {
 container.addEventListener('click', (event) => {
     dot.style.left = String(event.pageX + container.scrollLeft - (containerRect.x + 5)) + "px";
     dot.style.top = String(event.pageY + container.scrollTop - (containerRect.y + 5)) + "px";
-    dot.style.opacity = "50%";
+    dot.style.opacity = "75%";
     currentCoords[1] = coords[1] + (event.pageX + container.scrollLeft - (containerRect.x + 5)) * 0.00001;
     currentCoords[0] = coords[0] - (event.pageY + container.scrollTop - (containerRect.y + 5)) * 0.00001;
 
