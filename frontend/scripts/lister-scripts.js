@@ -21,7 +21,25 @@ const coords = [30.42454333155956, -91.08618485649713]
 let currentCoords = [...coords];
 
 const resetButton = document.querySelector("#reset");
+
+
 resetButton.addEventListener('click', () => {
+    const address = document.querySelector("#address").value;
+    const price = document.querySelector("#price").value;
+    const spots = document.querySelector("#spots").value;
+    const objectToSend = {
+        coords: currentCoords,
+        address: address,
+        price: price,
+        spots: spots,
+    }
+    fetch('http://127.0.0.1:5000/send_data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(objectToSend),
+    })
     currentCoords = [...coords];
     coordsElement.textContent = '(none selected, click map location)';
     dot.style.opacity = '0';
