@@ -40,6 +40,12 @@ resetButton.addEventListener('click', () => {
         },
         body: JSON.stringify(objectToSend),
     })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            else console.log('everything is cool')
+            return response.json();
+        })
+
     currentCoords = [...coords];
     coordsElement.textContent = '(none selected, click map location)';
     dot.style.opacity = '0';

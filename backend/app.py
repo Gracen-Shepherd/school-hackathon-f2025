@@ -1,13 +1,43 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, session
+from flask_cors import CORS
+import json
 
 app = Flask(__name__)
+CORS(app)
+app.config['SECRET_KEY'] = 'pastaballsinpastasoup'
+DATA_FILE = 'data.json'
 
-@app.route("/send_data")
+
 def send_data():
     if request.method == "POST":
         js_obj = request.get_json()
-        session['data'].append(js_obj)
+        print(f"wowie the obj is {js_obj}")
 
-@app.route("/recieve_data")
-def recieve_data():
-    return session['data']
+        currentfile = []
+
+        try:
+            with open(DATA_FILE, 'r') as file:
+                currentfile = json.load(file)
+        except(FileNotFoundError, json.JSONDecodeError):
+            currentfile = []
+
+        currentfile.append(js_obj)
+
+        with open(DATA_FILE, 'w') as file:
+            json.dump(currentfile, file, indent=2)
+
+        return jsonify({'message': "Data received"}), 200
+    else:
+        # OPTIONS handled by CORS
+        return "", 200
+
+@app.route("/receive_data")
+def receive_data():
+    try:
+        with open(DATA_FILE, 'r') as file:
+            return json.load(file)
+    except(FileNotFoundError, json.JSONDecodeError):
+        return "", 200  # TODO: proper error handle here
+
+if __name__ == '__main__':
+    app.run(debug=True)
