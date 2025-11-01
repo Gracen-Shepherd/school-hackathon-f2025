@@ -7,7 +7,7 @@ CORS(app)
 app.config['SECRET_KEY'] = 'pastaballsinpastasoup'
 DATA_FILE = 'data.json'
 
-
+@app.route("/send_data", methods=["POST","OPTIONS"])
 def send_data():
     if request.method == "POST":
         js_obj = request.get_json()
@@ -35,7 +35,8 @@ def send_data():
 def receive_data():
     try:
         with open(DATA_FILE, 'r') as file:
-            return json.load(file)
+            data = json.load(file)
+            return jsonify(data), 200
     except(FileNotFoundError, json.JSONDecodeError):
         return "", 200  # TODO: proper error handle here
 
