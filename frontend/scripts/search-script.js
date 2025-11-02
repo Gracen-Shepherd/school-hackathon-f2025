@@ -24,10 +24,11 @@ async function getDots() {
         for (const item of data) {
             let newDot = document.createElement("div");
             newDot.classList.add("dot");
-            newDot.style.left = String(((item.coords[1]) - coords[1]) / 0.00001) + "px"
-            newDot.style.top = String(((item.coords[0]) - coords[0]) / -0.00001) + "px"
+            newDot.style.left = String(((item['coords'][1]) - coords[1]) / 0.00001) + "px"
+            newDot.style.top = String(((item['coords'][0]) - coords[0]) / -0.00001) + "px"
+            newDot.id = item['id'];
             map.appendChild(newDot);
-            dotsAndData[newDot] = item
+            dotsAndData[item['id']] = item
         }
 
     } catch (error) {
@@ -46,7 +47,11 @@ map.addEventListener("click", (event) => {
         }
 
         event.target.classList.add("active");
-        let dataToUse = dotsAndData[event.target]
+        let dataToUse = dotsAndData[event.target.id]
+        document.querySelector('.coords').textContent = '' + dataToUse['coords'][0] + ' ' + dataToUse['coords'][1];
+        document.querySelector('#address').textContent = dataToUse['address'];
+        document.querySelector('#price').textContent = dataToUse['price'];
+        document.querySelector('#spots').textContent = dataToUse['spots'];
         console.log(dataToUse)
     }
 

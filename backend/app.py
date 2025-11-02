@@ -18,10 +18,13 @@ def send_data():
         try:
             with open(DATA_FILE, 'r') as file:
                 currentfile = json.load(file)
+                counter = currentfile[-1]['id'] + 1
         except(FileNotFoundError, json.JSONDecodeError):
             currentfile = []
+            counter = 0
 
         currentfile.append(js_obj)
+        currentfile[-1]['id'] = counter
 
         with open(DATA_FILE, 'w') as file:
             json.dump(currentfile, file, indent=2)
