@@ -1,17 +1,14 @@
-const container = document.querySelector(".map");
+const mapContainer = document.querySelector(".map");
 let dot = document.querySelector(".dot")
-containerRect = container.getBoundingClientRect();
+containerRect = mapContainer.getBoundingClientRect();
 
-function TruncateSixDigits(num) {
-    return Math.round(num * (10 ** 6)) / (10 ** 6)
-}
 
-container.addEventListener('click', (event) => {
-    dot.style.left = String(event.pageX + container.scrollLeft - (containerRect.x + 7)) + "px";
-    dot.style.top = String(event.pageY + container.scrollTop - (containerRect.y + 7)) + "px";
+mapContainer.addEventListener('click', (event) => {
+    dot.style.left = String(event.pageX + mapContainer.scrollLeft - (containerRect.x + 7)) + "px";
+    dot.style.top = String(event.pageY + mapContainer.scrollTop - (containerRect.y + 7)) + "px";
     dot.style.opacity = "75%";
-    currentCoords[1] = coords[1] + (event.pageX + container.scrollLeft - (containerRect.x + 7)) * 0.00001;
-    currentCoords[0] = coords[0] - (event.pageY + container.scrollTop - (containerRect.y + 7)) * 0.00001;
+    currentCoords[1] = coords[1] + (event.pageX + mapContainer.scrollLeft - (containerRect.x + 7)) * 0.00001;
+    currentCoords[0] = coords[0] - (event.pageY + mapContainer.scrollTop - (containerRect.y + 7)) * 0.00001;
 })
 
 const coords = [30.42454333155956, -91.08618485649713]

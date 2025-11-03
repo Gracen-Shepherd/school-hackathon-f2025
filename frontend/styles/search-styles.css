@@ -6,3 +6,11 @@
     background-color: #a860ee;
     opacity: 1;
 }
+
+.info-group {
+    margin: 20px 0;
+}
+
+.form-card.form-card {
+    padding: 20px 50px;
+}

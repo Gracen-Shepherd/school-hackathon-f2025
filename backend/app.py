@@ -22,9 +22,9 @@ def send_data():
         except(FileNotFoundError, json.JSONDecodeError):
             currentfile = []
             counter = 0
-
-        currentfile.append(js_obj)
-        currentfile[-1]['id'] = counter
+        if js_obj['address'] != '':
+            currentfile.append(js_obj)
+            currentfile[-1]['id'] = counter
 
         with open(DATA_FILE, 'w') as file:
             json.dump(currentfile, file, indent=2)
