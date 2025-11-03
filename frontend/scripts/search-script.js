@@ -1,16 +1,8 @@
 const map = document.querySelector('.map');
 const dotsAndData = {}
 const coords = [30.42454333155956, -91.08618485649713]
+const reserveButton = document.getElementById('reset');
 
-/*
-fetch('http://127.0.0.1:5000/send_data', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(objectToSend),
-})
-*/
 async function getDots() {
     try {
         const response = await fetch(`http://127.0.0.1:5000/receive_data`);
@@ -53,6 +45,11 @@ map.addEventListener("click", (event) => {
         document.querySelector('#spots').textContent = dataToUse['spots'];
         console.log(dataToUse)
     }
-
-
 });
+
+reserveButton.addEventListener("click", () => {
+    const spots = document.querySelector('#spots');
+    if (spots.textContent != '' && Number(spots.textContent) > 0) {
+        spots.textContent = Number(spots.textContent) - 1;
+    }
+})
