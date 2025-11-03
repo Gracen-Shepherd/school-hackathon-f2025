@@ -48,7 +48,6 @@ map.addEventListener("click", (event) => {
 
         event.target.classList.add("active");
         let dataToUse = dotsAndData[event.target.id]
-        document.querySelector('.coords').textContent = '' + dataToUse['coords'][0] + ' ' + dataToUse['coords'][1];
         document.querySelector('#address').textContent = dataToUse['address'];
         document.querySelector('#price').textContent = dataToUse['price'];
         document.querySelector('#spots').textContent = dataToUse['spots'];

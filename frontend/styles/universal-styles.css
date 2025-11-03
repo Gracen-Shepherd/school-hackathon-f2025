@@ -26,7 +26,7 @@ body {
 #map-img {
     display: block;
     margin: auto;
-    width: 300%
+    width: 5635px;
 }
 
 .info-bar {
@@ -46,8 +46,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
     background-color: var(--primary-750);
     border-radius: 100%;
 }
@@ -71,7 +71,7 @@ body {
 }
 
 .form-card {
-    padding: 50px;
+    padding: 40px 50px;
     background-color: var(--primary-350);
     border-radius: 20px;
     box-shadow: 0 8px 32px -6px #000000;
@@ -87,6 +87,7 @@ body {
     margin: 35px auto 0;
     border: 2px solid black;
     border-radius: 10px;
+    transition: background-color 0.2s ease;
 }
 
 .button:hover {
