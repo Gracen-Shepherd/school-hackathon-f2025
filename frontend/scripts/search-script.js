@@ -5,7 +5,7 @@ const reserveButton = document.getElementById('reset');
 
 async function getDots() {
     try {
-        const response = await fetch(`http://127.0.0.1:5000/receive_data`);
+        const response = await fetch(`https://gracenatschoolshepherd.pythonanywhere.com/receive_data`);
 
         if (!response.ok) {
             console.log('Error! HTTP response was not ok');

@@ -2,12 +2,12 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for, s
 from flask_cors import CORS
 import json
 
-app = Flask(__name__)
-CORS(app)
-app.config['SECRET_KEY'] = 'pastaballsinpastasoup'
+myapp = Flask(__name__)
+CORS(myapp)
+myapp.config['SECRET_KEY'] = 'pastaballsinpastasoup'
 DATA_FILE = 'data.json'
 
-@app.route("/send_data", methods=["POST","OPTIONS"])
+@myapp.route("/send_data", methods=["POST","OPTIONS"])
 def send_data():
     if request.method == "POST":
         js_obj = request.get_json()
@@ -34,7 +34,7 @@ def send_data():
         # OPTIONS handled by CORS
         return "", 200
 
-@app.route("/receive_data")
+@myapp.route("/receive_data")
 def receive_data():
     try:
         with open(DATA_FILE, 'r') as file:
@@ -44,4 +44,4 @@ def receive_data():
         return "", 200  # TODO: proper error handle here
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    myapp.run(debug=True)

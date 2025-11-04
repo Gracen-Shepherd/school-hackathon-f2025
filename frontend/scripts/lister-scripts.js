@@ -27,7 +27,7 @@ resetButton.addEventListener('click', () => {
         price: price,
         spots: spots,
     }
-    fetch('http://127.0.0.1:5000/send_data', {
+    fetch('https://gracenatschoolshepherd.pythonanywhere.com/send_data', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
